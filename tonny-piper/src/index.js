@@ -1,17 +1,65 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const books = [ 
+  {
+    id: 1,
+  image: 'https://m.media-amazon.com/images/I/71sFHlPsGcL._AC_UY327_FMwebp_QL65_.jpg',
+  title: 'Hacking & Security: Das umfassende Hacking-Handbuch ' ,
+  description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi unde minima, consequatur qui dolores blanditiis voluptatum laboriosam quo dolorem doloribus.',
+  autor: 'Michael Kofler, Andre Zingsheim'
+ },
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ {
+   id: 2,
+  image: 'https://m.media-amazon.com/images/I/71PuOGCojbL._AC_UY327_FMwebp_QL65_.jpg',
+  title: 'Android-Smartphone' ,
+  description: 'Android-Smartphone: Die verständliche Anleitung für alle Android-Smartphones: Samsung, Huawei, Xiaomi, Vivo, Oppo, Sony u.v.m. Aktuell zu Android 12.',
+  autor: 'Rainer Hattenhauer'
+ },
+ {
+  id: 3,
+ image: 'https://m.media-amazon.com/images/I/61lh6ShY9tL._AC_UY327_FMwebp_QL65_.jpg',
+ title: 'Git Handbuch für Einsteiger' ,
+ description: 'Git Handbuch für Einsteiger: Der leichte Weg zum Git-Experten.',
+ autor: 'Paul Fuchs'
+},
+{
+  id: 4,
+ image: 'https://m.media-amazon.com/images/I/61iZUB4ocZL._AC_UY327_FMwebp_QL65_.jpg',
+ title: 'Basiswissen Informatik' ,
+ description: 'Basiswissen Informatik - Grundideen einfach und anschaulich erklärt: Includes Digital Download.',
+ autor: 'Eckart Zitler'
+}
+
+
+]
+
+const BookList = () => {
+  return ( <section>
+    {books.map((book) =>{
+      return <Book key = {book.id} book = {book}></Book> //spread Operator dosn't work
+    })}
+    </section>
+  )
+}
+
+const Book = (props) =>{ //doesn't work: {autor, image, description, title}
+  const {image, autor,description, title} = props.book
+  return (
+    <section className='bookElt'>
+      <h4> {title}</h4>
+    <img src= {image} alt = "image of the Book"></img>
+    <p>
+      {description}<br/>
+      {autor}
+    </p>
+    </section>
+  )
+}
+
+ReactDOM.render(<BookList/>, document.getElementById('root'));
+
+/* {books.map((book) => {
+  return <Book key= {book.id} {...book}></Book>
+})} */
+
