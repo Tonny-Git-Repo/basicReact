@@ -1,0 +1,11 @@
+{
+  "name": "basicreact",
+  "version": "1.0.0",
+  "description": "learning the basics of react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tonny Piper",
+  "license": "ISC"
+}
